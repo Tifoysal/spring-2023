@@ -8,16 +8,14 @@ class HomeController extends Controller
 {
     public function home()
     {
-        echo "welcome to our bootcamp";
+        return view('welcome');
     }
 
     public function aboutUs()
     {
-        echo "welcome to our about us";
+
+       return view('about');
     }
 
-    public function contact()
-    {
-        echo "welcome to our contact us";
-    }
+
 }
