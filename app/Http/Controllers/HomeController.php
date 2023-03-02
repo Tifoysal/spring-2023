@@ -8,7 +8,13 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('welcome');
+        return view('admin.pages.dashboard');
+    }
+
+
+    public function category()
+    {
+        return view('admin.pages.category');
     }
 
     public function aboutUs()
