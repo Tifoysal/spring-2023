@@ -20,3 +20,4 @@ Route::get('/',[HomeController::class,'home']);
 Route::get('/categories',[HomeController::class,'category']);
 
 Route::get('/create/category',[CategoryController::class,'showCreateForm']);
+Route::post('/category/store',[CategoryController::class,'store']);
