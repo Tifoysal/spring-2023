@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -17,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class,'home']);
-Route::get('/categories',[HomeController::class,'category']);
+Route::get('/categories',[HomeController::class,'category'])->name('category.list');
 
 Route::get('/create/category',[CategoryController::class,'showCreateForm']);
 Route::post('/category/store',[CategoryController::class,'store']);
+
+Route::get('/brand/list',[BrandController::class,'list'])->name('brand.list');
+Route::get('/brand/create',[BrandController::class,'create'])->name('brand.create');
+Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');

@@ -21,7 +21,7 @@ class CategoryController extends Controller
             'description'=>$request->description
         ]);
 
-        return redirect()->back();
+        return redirect()->route('category.list');
 
     }
 }
