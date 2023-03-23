@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function category()
     {
-        $bag=Category::all();
+        $bag=Category::paginate(10);
         return view('admin.pages.category.list',compact('bag'));
     }
 

@@ -15,12 +15,11 @@
     </thead>
     <tbody>
 
-    @foreach($bag as $peyara)
-
+    @foreach($bag as $data)
     <tr>
-        <th scope="row">{{$peyara->id}}</th>
-        <td>{{$peyara->name}}</td>
-        <td>{{$peyara->status}}</td>
+        <th scope="row">{{$data->id}}</th>
+        <td>{{$data->name}}</td>
+        <td>{{$data->status}}</td>
         <td>
             <a href="" class="btn btn-success">View</a>
             <a href="" class="btn btn-danger">Delete</a>
@@ -30,4 +29,5 @@
 
     </tbody>
 </table>
+    {{$bag->links()}}
 @endsection
