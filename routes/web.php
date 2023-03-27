@@ -31,3 +31,5 @@ Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store'
 Route::get('/product/list',[ProductController::class,'list'])->name('product.list');
 Route::get('/product/create-form',[ProductController::class,'createForm'])->name('product.create.form');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+Route::get('/product/view/{id}',[ProductController::class,'view'])->name('product.view');
+Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');

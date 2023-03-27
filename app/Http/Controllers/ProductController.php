@@ -10,8 +10,8 @@ class ProductController extends Controller
 {
     public function list()
     {
-        $products=Product::all();
-
+        $products=Product::with('category')->get();
+//dd($products);
         return view('admin.pages.product.list',compact('products'));
     }
 
@@ -32,7 +32,20 @@ class ProductController extends Controller
            'quantity'=>$request->product_qty,
            'description'=>$request->description
        ]);
-
+        notify()->success('Product Created.');
        return redirect()->route('product.list');
+    }
+
+    public function view($id)
+    {
+        $product=Product::find($id);
+        return view('admin.pages.product.view',compact('product'));
+    }
+
+    public function delete($id)
+    {
+        Product::find($id)->delete();
+        notify()->success('Product deleted.');
+        return redirect()->back();
     }
 }
