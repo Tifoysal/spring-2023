@@ -18,18 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'home']);
-Route::get('/categories',[HomeController::class,'category'])->name('category.list');
 
-Route::get('/create/category',[CategoryController::class,'showCreateForm']);
-Route::post('/category/store',[CategoryController::class,'store']);
+Route::get('/login',[HomeController::class,'login'])->name('login');
 
-Route::get('/brand/list',[BrandController::class,'list'])->name('brand.list');
-Route::get('/brand/create',[BrandController::class,'create'])->name('brand.create');
-Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');
 
-Route::get('/product/list',[ProductController::class,'list'])->name('product.list');
-Route::get('/product/create-form',[ProductController::class,'createForm'])->name('product.create.form');
-Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
-Route::get('/product/view/{id}',[ProductController::class,'view'])->name('product.view');
-Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/',[HomeController::class,'home']);
+
+    Route::get('/categories',[HomeController::class,'category'])->name('category.list');
+
+    Route::get('/create/category',[CategoryController::class,'showCreateForm']);
+    Route::post('/category/store',[CategoryController::class,'store']);
+
+    Route::get('/brand/list',[BrandController::class,'list'])->name('brand.list');
+    Route::get('/brand/create',[BrandController::class,'create'])->name('brand.create');
+    Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');
+
+    Route::get('/product/list',[ProductController::class,'list'])->name('product.list');
+    Route::get('/product/create-form',[ProductController::class,'createForm'])->name('product.create.form');
+    Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
+    Route::get('/product/view/{id}',[ProductController::class,'view'])->name('product.view');
+    Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+});

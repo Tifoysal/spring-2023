@@ -5,25 +5,33 @@
     <form action="{{route('product.store')}}" method="post">
         @csrf
         <div class="row">
+
+
+
             <div class="col-md-2"></div>
             <div class="col-md-6">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="alert alert-danger">{{$error}}</p>
+                    @endforeach
+                @endif
                 <div>
                     <label for="">Enter Product Name:</label>
-                    <input name="product_name" placeholder="Enter Product name" type="text" class="form-control">
+                    <input required name="product_name" placeholder="Enter Product name" type="text" class="form-control">
                 </div>
                 <div>
                     <label for="">Enter Product Price:</label>
-                    <input name="product_price" placeholder="Enter Product Price" type="number" class="form-control">
+                    <input required min="100" name="product_price" placeholder="Enter Product Price" type="number" class="form-control">
                 </div>
 
                 <div>
                     <label for="">Enter Product Quantity:</label>
-                    <input name="product_qty" placeholder="Enter Product quantity" type="number" class="form-control">
+                    <input required name="product_qty" placeholder="Enter Product quantity" type="number" class="form-control">
                 </div>
 
                 <div>
                     <label for="">Select Status</label>
-                    <select name="status" id="" class="form-control">
+                    <select required name="status" id="" class="form-control">
                         <option value="active">Active</option>
                         <option value="inactive">InActive</option>
                     </select>

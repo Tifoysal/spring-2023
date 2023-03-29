@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -24,6 +25,24 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+//        $request->validate([
+//           'product_name' =>'required',
+//           'product_price' =>'required'
+//        ]);
+
+        $validate=Validator::make($request->all(),[
+            'product_name' =>'required',
+           'product_price' =>'required',
+           'product_qty' =>'required|numeric|gt:0',
+           'category_id' =>'required',
+        ]);
+        if($validate->fails())
+        {
+            notify()->error($validate->getMessageBag());
+//            notify()->error("Somethings went wrong.");
+            return redirect()->back();
+        }
+
 
        Product::create([
           'name'=>$request->product_name,

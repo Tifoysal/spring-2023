@@ -25,6 +25,10 @@ class HomeController extends Controller
        return view('about');
     }
 
+    public function login()
+    {
+        return view('admin.pages.login');
+    }
 
 
 
