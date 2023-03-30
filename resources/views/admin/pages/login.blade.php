@@ -14,21 +14,22 @@
     @notifyCss
 </head>
 <body>
-
+<x:notify-messages />
 <div class="row" style="padding-top: 100px;">
     <div class="col-md-3"></div>
     <div class="col-md-6">
 
-        <form>
+        <form action="{{route('do.login')}}" method="post">
+            @csrf
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <input type="email" id="form2Example1" class="form-control" />
+                <input required name="email" type="email" id="form2Example1" class="form-control" />
                 <label class="form-label" for="form2Example1">Email address</label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" />
+                <input required name="password" type="password" id="form2Example2" class="form-control" />
                 <label class="form-label" for="form2Example2">Password</label>
             </div>
 
@@ -49,7 +50,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
             <!-- Register buttons -->
             <div class="text-center">

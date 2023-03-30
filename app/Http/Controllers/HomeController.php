@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -30,6 +32,35 @@ class HomeController extends Controller
         return view('admin.pages.login');
     }
 
+    public function doLogin(Request $request)
+    {
+        $validate=Validator::make($request->all(),[
+           'email'=>'required',
+           'password'=>'required|min:5',
+        ]);
+
+        if($validate->fails())
+        {
+            notify()->error($validate->getMessageBag());
+            return redirect()->back();
+        }
+
+        $credentials=$request->only(['email','password']);
+        if(auth()->attempt($credentials)){
+            notify()->success('Login Success');
+            return redirect()->route('home');
+        }
+            notify()->error('Invalid Credentials');
+            return redirect()->back();
+
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        notify()->success('Logout Success.');
+        return redirect()->route('login');
+    }
 
 
 }

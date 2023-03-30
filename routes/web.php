@@ -20,10 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login',[HomeController::class,'login'])->name('login');
-
+Route::post('/do-login',[HomeController::class,'doLogin'])->name('do.login');
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('/',[HomeController::class,'home']);
+
+    Route::get('/',[HomeController::class,'home'])->name('home');
+    Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 
     Route::get('/categories',[HomeController::class,'category'])->name('category.list');
 
