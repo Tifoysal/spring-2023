@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Frontend\HomeController as FrontendHome;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//website route
+Route::get('/',[FrontendHome::class,'home'])->name('website');
 
+
+
+
+
+
+//admin panel routes
+Route::group(['prefix'=>'admin'],function (){
 
 Route::get('/login',[HomeController::class,'login'])->name('login');
 Route::post('/do-login',[HomeController::class,'doLogin'])->name('do.login');
@@ -41,5 +51,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
     Route::get('/product/view/{id}',[ProductController::class,'view'])->name('product.view');
     Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+});
 
 });
