@@ -25,6 +25,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
 //        $request->validate([
 //           'product_name' =>'required',
 //           'product_price' =>'required'
@@ -43,13 +44,21 @@ class ProductController extends Controller
             return redirect()->back();
         }
 
+        $fileName='';
+        if($request->hasFile('product_image'))
+        {
+            $fileName=date('Ymdhis').'.'.$request->file('product_image')->getClientOriginalExtension();
+            $request->file('product_image')->storeAs('/uploads',$fileName);
+        }
+
 
        Product::create([
           'name'=>$request->product_name,
            'category_id'=>$request->category_id,
            'price'=>$request->product_price,
            'quantity'=>$request->product_qty,
-           'description'=>$request->description
+           'description'=>$request->description,
+           'image'=>$fileName
        ]);
         notify()->success('Product Created.');
        return redirect()->route('product.list');
