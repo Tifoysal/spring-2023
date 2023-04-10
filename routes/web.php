@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 //website route
 Route::get('/',[FrontendHome::class,'home'])->name('website');
+Route::get('/products-under-category/{id}',[FrontendHome::class,'productsUnderCategory'])->name('products.under.category');
+Route::get('/products-search',[FrontendHome::class,'productSearch'])->name('products.search');
 
 
 

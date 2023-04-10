@@ -15,7 +15,7 @@
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach($categories as $data)
-                        <a href="" class="nav-item nav-link">{{$data->name}}</a>
+                        <a href="{{route('products.under.category',$data->id)}}" class="nav-item nav-link">{{$data->name}}</a>
                         @endforeach
 
                     </div>
