@@ -44,8 +44,21 @@
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+
+                            @guest
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                                Login
+                            </button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Register
+                            </button>
+                            @endguest
+
+                            @auth
+                                <p>{{auth()->user()->name}}</p>
+                                    <a href="{{route('user.logout')}}" class="btn btn-danger">Logout</a>
+                                @endauth
                         </div>
                     </div>
                 </nav>
@@ -410,5 +423,86 @@
     <!-- Products End -->
 
 
+
+
+
+
+    <!-- registration Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('user.store')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Enter Your Name:</label>
+                        <input required type="text" name="customer_name" class="form-control" placeholder="Enter your name">
+                    </div>
+                        <div class="form-group">
+                            <label for="">Enter Your email:</label>
+                            <input required type="email" name="customer_email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Enter Your password:</label>
+                            <input required type="password" name="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Confirm Your Password:</label>
+                            <input required type="password" name="password_confirmation" class="form-control" placeholder="confirm password">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('user.login')}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="">Enter Your email:</label>
+                            <input required type="email" name="email" class="form-control" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Enter Your password:</label>
+                            <input required type="password" name="password" class="form-control" placeholder="Enter your password">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 
 @endsection

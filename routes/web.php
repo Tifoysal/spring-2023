@@ -22,8 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontendHome::class,'home'])->name('website');
 Route::get('/products-under-category/{id}',[FrontendHome::class,'productsUnderCategory'])->name('products.under.category');
 Route::get('/products-search',[FrontendHome::class,'productSearch'])->name('products.search');
+Route::post('/user-store',[FrontendHome::class,'userStore'])->name('user.store');
+Route::post('/user-login',[FrontendHome::class,'userLogin'])->name('user.login');
 
 
+Route::get('/user-logout',[FrontendHome::class,'logout'])->name('user.logout');
 
 
 

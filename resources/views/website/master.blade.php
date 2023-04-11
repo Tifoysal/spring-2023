@@ -24,6 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{url('/css/website/style.css')}}" rel="stylesheet">
+    @notifyCss
 </head>
 
 <body>
@@ -31,6 +32,8 @@
 
 
 @include('website.partials.top')
+
+<x:notify-messages />
 
 
 @yield('content')
@@ -54,6 +57,7 @@
 
 <!-- Template Javascript -->
 <script src="https://themewagon.github.io/eshopper/js/main.js"></script>
+@notifyJs
 </body>
 
 </html>
