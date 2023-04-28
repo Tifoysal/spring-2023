@@ -39,6 +39,8 @@ Route::post('/do-login',[HomeController::class,'doLogin'])->name('do.login');
 
 Route::group(['middleware'=>'auth'],function(){
 
+    Route::group(['middleware'=>'checkAdmin'],function(){
+
     Route::get('/',[HomeController::class,'home'])->name('home');
     Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 
@@ -57,6 +59,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/product/view/{id}',[ProductController::class,'view'])->name('product.view');
     Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
 
+    });
 });
 
 });

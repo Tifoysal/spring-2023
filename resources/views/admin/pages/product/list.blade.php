@@ -1,7 +1,32 @@
 @extends('admin.master')
 @section('content')
 
+    <form action="{{route('product.list')}}">
+
+
+    <div class="row" style="padding-top: 40px;padding-bottom: 20px;">
+        <div class="col-md-4">
+            <label for="">From Date</label>
+            <input type="date" name="from_date" class="form-control" value="{{request()->from_date}}">
+        </div>
+        <div class="col-md-4">
+            <label for="">To Date</label>
+            <input type="date" name="to_date" class="form-control" value="{{request()->to_date}}">
+        </div>
+        <div class="col-md-4">
+
+            <button class="btn btn-success" type="submit">Search</button>
+            <button class="btn btn-primary" onclick="printDiv('printArea')" type="button">Print</button>
+        </div>
+    </div>
+
+    </form>
+
+
+
     <a href="{{route('product.create.form')}}" class="btn btn-success">Create new product</a>
+    <div id="printArea">
+
     <table class="table">
         <thead>
         <tr>
@@ -33,4 +58,25 @@
 @endforeach
         </tbody>
     </table>
+
+    </div>
+
+
+
+    <script>
+        // function test(){
+        //     alert("hello print")
+        // }
+        function printDiv(divID){
+            var printContents = document.getElementById(divID).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+
+        }
+    </script>
 @endsection

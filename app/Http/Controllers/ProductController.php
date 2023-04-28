@@ -11,7 +11,21 @@ class ProductController extends Controller
 {
     public function list()
     {
-        $products=Product::with('category')->get();
+        if(\request()->from_date)
+        {
+            $validate=Validator::make(\request()->all(),[
+               'to_date'=>'after:from_date'
+            ]);
+            if($validate->fails())
+            {
+                notify()->error('To date should greater than from date.');
+                return redirect()->route('product.list');
+            }
+            $products=Product::with('category')->whereBetween('created_at',[\request()->from_date,\request()->to_date])->get();
+        }else{
+            $products=Product::with('category')->get();
+        }
+
 //dd($products);
         return view('admin.pages.product.list',compact('products'));
     }
