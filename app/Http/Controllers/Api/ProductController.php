@@ -9,6 +9,23 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+
+    public function test()
+    {
+        $universities ='[
+           {
+        "rank": "15",
+        "name": "Ahsanullah\'s University of Science and Technology",
+        "location": "Dhaka"
+    },{
+        "rank": "15",
+        "name": "Ahsanullah University of Science and Technology",
+        "location": "Dhaka"
+    }
+        ]';
+
+        dd(json_decode($universities,true));
+    }
     public function getProducts()
     {
         try {

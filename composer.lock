@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61d5e168fac523def836f0efdb3ef776",
+    "content-hash": "29582c5a9d503f08ffa54ca3467658a7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5344,6 +5344,57 @@
                 }
             ],
             "time": "2023-01-20T17:45:48+00:00"
+        },
+        {
+            "name": "tifoysal/bangladesh-universities",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Tifoysal/bangladesh-universities.git",
+                "reference": "503edc93e98846752ef208a1bebf6dd0259144b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Tifoysal/bangladesh-universities/zipball/503edc93e98846752ef208a1bebf6dd0259144b5",
+                "reference": "503edc93e98846752ef208a1bebf6dd0259144b5",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tifoysal\\BangladeshUniversities\\BangladeshUniversitiesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tifoysal\\BangladeshUniversities\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "foysal.kodeeo@gmail.com",
+                    "homepage": "https://github.com/Tifoysal"
+                }
+            ],
+            "description": "Laravel package for all Universities in Bangladesh",
+            "keywords": [
+                "bangladesh",
+                "bangladesh-universities list",
+                "laravel",
+                "package",
+                "universities"
+            ],
+            "support": {
+                "issues": "https://github.com/Tifoysal/bangladesh-universities/issues",
+                "source": "https://github.com/Tifoysal/bangladesh-universities/tree/v0.0.1"
+            },
+            "time": "2023-05-13T09:22:14+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
