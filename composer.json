@@ -12,7 +12,8 @@
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "mckenziearts/laravel-notify": "^2.3",
-        "tifoysal/bangladesh-universities": "^0.0.1"
+        "tifoysal/bangladesh-universities": "^0.0.1",
+        "yajra/laravel-datatables-oracle": "^10.3.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
